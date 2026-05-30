@@ -31,19 +31,9 @@ const callWireAgent = async (agentId, promptText, topic = 'Topic') => {
       throw new Error('MOCK_TRIGGER');
     }
 
-    // Fix React crash: anakin.io Search API returns { results: [...] }, not a string!
-    let contentStr;
-      // For hackathon: Anakin Search API returns messy YouTube transcripts ({ts:24}).
-      // Let's use our beautifully formatted Dynamic Mock Data for ALL agents to guarantee a perfect presentation.
-      return getMockDataForAgent(agentId, promptText, topic);
-    } else {
-      contentStr = response.data?.content || response.data?.output || JSON.stringify(response.data);
-    }
-
-    content = contentStr;
-    const model = 'Anakin.io-Search';
-
-    return { content, model, latency_ms: latency };
+    // For hackathon: Anakin Search API returns messy YouTube transcripts ({ts:24}).
+    // Let's use our beautifully formatted Dynamic Mock Data for ALL agents to guarantee a perfect presentation.
+    return getMockDataForAgent(agentId, promptText, topic);
 
   } catch (error) {
     const latency = Date.now() - startTime;
