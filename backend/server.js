@@ -34,6 +34,20 @@ app.use('/api/study', studyRoutes);
 // Global Error Handler
 app.use(errorHandler);
 
-app.listen(config.port, () => {
-  console.log(`Server running on port ${config.port}`);
+// Serve Frontend Static Files for Production Deployment
+const path = require('path');
+const frontendPath = path.join(__dirname, '../frontend/dist');
+app.use(express.static(frontendPath));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
+
+// Export for Vercel Serverless or Run Locally
+if (process.env.NODE_ENV !== 'production' || process.env.RENDER) {
+  app.listen(config.port, () => {
+    console.log(`Server running on port ${config.port}`);
+  });
+}
+
+module.exports = app;
