@@ -64,11 +64,11 @@ const callWireAgent = async (agentId, promptText) => {
 
 // Helper function to return beautiful mock data for the hackathon demo if API fails
 const getMockDataForAgent = (agentId, promptText) => {
-  const isConcept = promptText.includes('Explain the concept');
-  const isAnalogy = promptText.includes('desi analogy');
-  const isQuiz = promptText.includes('JSON format') && promptText.includes('multiple-choice');
-  const isPyq = promptText.includes('exam pattern');
-  const isPlan = promptText.includes('3-day study plan');
+  const isConcept = promptText.includes('Computer Science professor');
+  const isAnalogy = promptText.includes('creative tutor');
+  const isQuiz = promptText.includes('creating a quiz');
+  const isPyq = promptText.includes('Previous Year Questions');
+  const isPlan = promptText.includes('academic planner');
 
   if (isConcept) {
     return {

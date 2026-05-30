@@ -76,7 +76,7 @@ const Dashboard = () => {
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
     pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save(\`StudyPlan-\${topic.replace(/\\s+/g, '-')}.pdf\`);
+    pdf.save(`StudyPlan-${topic.replace(/\s+/g, '-')}.pdf`);
   };
 
   const shareResult = async () => {
@@ -105,7 +105,7 @@ const Dashboard = () => {
       )}
 
       {/* Sidebar */}
-      <aside className={\`fixed md:static inset-y-0 left-0 w-64 bg-slate-900 border-r border-slate-800 p-4 transform \${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform z-50 flex flex-col\`}>
+      <aside className={`fixed md:static inset-y-0 left-0 w-64 bg-slate-900 border-r border-slate-800 p-4 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform z-50 flex flex-col`}>
         <div className="flex items-center justify-between mb-8">
           <Link to="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-violet-500 text-transparent bg-clip-text flex items-center gap-2">
             <ArrowLeft size={20} className="text-slate-400" />
@@ -174,11 +174,11 @@ const Dashboard = () => {
                     key={sub}
                     type="button"
                     onClick={() => setSubject(sub)}
-                    className={\`px-4 py-1.5 rounded-full text-sm font-medium transition-colors \${
+                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                       subject === sub 
                         ? 'bg-blue-600 text-white border border-blue-500' 
                         : 'bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-700'
-                    }\`}
+                    }`}
                   >
                     {sub}
                   </button>
@@ -189,14 +189,14 @@ const Dashboard = () => {
                 <button
                   type="button"
                   onClick={() => setLanguage('en')}
-                  className={\`px-4 py-1.5 rounded-md text-sm font-bold \${language === 'en' ? 'bg-slate-700 text-white shadow' : 'text-slate-400'}\`}
+                  className={`px-4 py-1.5 rounded-md text-sm font-bold ${language === 'en' ? 'bg-slate-700 text-white shadow' : 'text-slate-400'}`}
                 >
                   English
                 </button>
                 <button
                   type="button"
                   onClick={() => setLanguage('hi')}
-                  className={\`px-4 py-1.5 rounded-md text-sm font-bold \${language === 'hi' ? 'bg-slate-700 text-white shadow' : 'text-slate-400'}\`}
+                  className={`px-4 py-1.5 rounded-md text-sm font-bold ${language === 'hi' ? 'bg-slate-700 text-white shadow' : 'text-slate-400'}`}
                 >
                   Hinglish
                 </button>

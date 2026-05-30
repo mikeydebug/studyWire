@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sparkles, Zap, Brain, Target, ArrowRight, Github, Linkedin } from 'lucide-react';
+import { Sparkles, Zap, Brain, Target, ArrowRight } from 'lucide-react';
 
 const LandingPage = () => {
   return (
@@ -84,12 +84,8 @@ const LandingPage = () => {
             Built for Indian CS Students in 48 hours.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
-              <Github size={24} />
-            </a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
-              <Linkedin size={24} />
-            </a>
+            <a href="#" className="text-slate-400 hover:text-white transition-colors text-sm font-medium">Twitter</a>
+            <a href="#" className="text-slate-400 hover:text-white transition-colors text-sm font-medium">LinkedIn</a>
           </div>
         </div>
       </footer>

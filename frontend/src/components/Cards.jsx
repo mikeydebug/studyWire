@@ -19,11 +19,11 @@ const OutputCard = ({ title, icon: Icon, borderColor, badge, content, children, 
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className={\`bg-slate-900/80 backdrop-blur-md border-l-4 \${borderColor} rounded-r-2xl rounded-l-md p-6 shadow-xl relative\`}
+      className={`bg-slate-900/80 backdrop-blur-md border-l-4 ${borderColor} rounded-r-2xl rounded-l-md p-6 shadow-xl relative`}
     >
       <div className="flex justify-between items-start mb-4">
         <div className="flex items-center gap-3">
-          <div className={\`p-2 rounded-lg bg-slate-800 \${borderColor.replace('border-', 'text-').replace('-500', '-400')}\`}>
+          <div className={`p-2 rounded-lg bg-slate-800 ${borderColor.replace('border-', 'text-').replace('-500', '-400')}`}>
             <Icon size={24} />
           </div>
           <div>
