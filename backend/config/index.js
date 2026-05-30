@@ -6,26 +6,19 @@ const config = {
   frontendUrl: process.env.FRONTEND_URL || 'http://localhost:5173',
   anakin: {
     apiKey: process.env.ANAKIN_API_KEY,
-    conceptAgentId: process.env.ANAKIN_CONCEPT_AGENT_ID,
-    analogyAgentId: process.env.ANAKIN_ANALOGY_AGENT_ID,
-    quizAgentId: process.env.ANAKIN_QUIZ_AGENT_ID,
-    pyqAgentId: process.env.ANAKIN_PYQ_AGENT_ID,
-    planAgentId: process.env.ANAKIN_PLAN_AGENT_ID
+    agentId: process.env.ANAKIN_AGENT_ID
   }
 };
 
 // Validate environment variables at startup - crash fast if missing
 const requiredKeys = [
   'ANAKIN_API_KEY',
-  'ANAKIN_CONCEPT_AGENT_ID',
-  'ANAKIN_ANALOGY_AGENT_ID',
-  'ANAKIN_QUIZ_AGENT_ID',
-  'ANAKIN_PYQ_AGENT_ID',
-  'ANAKIN_PLAN_AGENT_ID'
+  'ANAKIN_AGENT_ID'
 ];
 
 for (const key of requiredKeys) {
-  if (!process.env[key]) {
+  // Allow skipping strict validation if we are in MOCK_API mode
+  if (!process.env[key] && process.env.MOCK_API !== 'true') {
     console.error(`FATAL ERROR: Environment variable ${key} is missing.`);
     process.exit(1);
   }
