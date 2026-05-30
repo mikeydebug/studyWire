@@ -7,18 +7,17 @@ const callWireAgent = async (agentId, promptText) => {
   try {
     // Assuming a standard Anakin Wire execution endpoint
     // Replace with the exact endpoint provided by Anakin API docs if different
-    // Use the Chatbot App endpoint as per Anakin documentation
-    const url = `https://api.anakin.ai/v1/chatbots/${agentId}/messages`;
+    // Use Anakin.io Search API
+    const url = `https://api.anakin.io/v1/search`;
     
     const response = await axios.post(url, {
-      content: promptText,
-      stream: false
+      prompt: promptText
     }, {
       headers: {
-        'Authorization': `Bearer ${process.env.ANAKIN_API_KEY}`,
+        'X-API-Key': process.env.ANAKIN_API_KEY,
         'Content-Type': 'application/json'
       },
-      timeout: 15000 // Ensure axios aborts if it takes > 15s
+      timeout: 25000 // Ensure axios aborts if it takes > 25s (search takes longer)
     });
 
     const latency = Date.now() - startTime;
@@ -32,8 +31,8 @@ const callWireAgent = async (agentId, promptText) => {
       throw new Error('MOCK_TRIGGER');
     }
 
-    content = response.data?.choices?.[0]?.message?.content || response.data?.output || response.data;
-    const model = response.data?.model || 'Anakin-Wire';
+    content = response.data?.content || response.data?.output || response.data;
+    const model = 'Anakin-Agentic-Search';
 
     return { content, model, latency_ms: latency };
 
