@@ -25,7 +25,7 @@ StudyWire takes a single student query and orchestrates **5 separate AI Agents**
 
 ```mermaid
 graph TD
-    A[Student Input (e.g., 'Deadlock in OS')] --> B(StudyWire Frontend React)
+    A["Student Input (e.g., 'Deadlock in OS')"] --> B(StudyWire Frontend React)
     B -->|POST /api/study| C{StudyWire Node.js Backend}
     
     C -->|Promise.allSettled() Parallel Execution| D(Anakin.io API & Dynamic Engine)
