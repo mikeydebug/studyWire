@@ -116,8 +116,18 @@ const Dashboard = () => {
           </button>
         </div>
 
-        <div className="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-wider mb-4">
-          <HistoryIcon size={16} /> Recent Queries
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-wider">
+            <HistoryIcon size={16} /> Recent Queries
+          </div>
+          {history.length > 0 && (
+            <button 
+              onClick={() => { setHistory([]); localStorage.removeItem('studywire_history'); }}
+              className="text-xs text-slate-500 hover:text-red-400 transition-colors"
+            >
+              Clear
+            </button>
+          )}
         </div>
         
         <div className="flex-1 overflow-y-auto space-y-2 no-scrollbar">
