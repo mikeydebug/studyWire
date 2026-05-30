@@ -28,7 +28,7 @@ graph TD
     A["Student Input (e.g., 'Deadlock in OS')"] --> B(StudyWire Frontend React)
     B -->|POST /api/study| C{StudyWire Node.js Backend}
     
-    C -->|Promise.allSettled() Parallel Execution| D(Anakin.io API & Dynamic Engine)
+    C -->|"Promise.allSettled Parallel Execution"| D["Anakin.io API and Dynamic Engine"]
     
     D --> E[Concept Engine]
     D --> F[Analogy Engine]
