@@ -72,13 +72,13 @@ const getMockDataForAgent = (agentId, promptText) => {
 
   if (isConcept) {
     return {
-      content: "### Paging in Operating Systems\\n\\nPaging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. This scheme permits the physical address space of a process to be non-contiguous.\\n\\n* **Logical Address Space**: Divided into fixed-size blocks called **pages**.\\n* **Physical Address Space**: Divided into fixed-size blocks called **frames**.\\n\\nWhen a process is to be executed, its pages are loaded into any available memory frames from their backing store. The **Page Table** maps logical pages to physical frames.",
+      content: "### Paging in Operating Systems\n\nPaging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. This scheme permits the physical address space of a process to be non-contiguous.\n\n* **Logical Address Space**: Divided into fixed-size blocks called **pages**.\n* **Physical Address Space**: Divided into fixed-size blocks called **frames**.\n\nWhen a process is to be executed, its pages are loaded into any available memory frames from their backing store. The **Page Table** maps logical pages to physical frames.",
       model: 'Anakin-Mock-Agent', latency_ms: 840
     };
   }
   if (isAnalogy) {
     return {
-      content: "Imagine you are throwing a massive big fat Indian wedding.\\n\\nYou can't fit all your relatives in one single giant banquet hall (Contiguous Memory). So instead, you book multiple smaller hotel rooms (Frames) across the city.\\n\\nYour uncle's family (Page 1) gets Room 101, your cousins (Page 2) get Room 505. They don't need to be in adjacent rooms, but they are all part of your wedding process! \\n\\nThe **Page Table** is just your uncle ji with a WhatsApp list, keeping track of exactly which relative is in which hotel room so they can be called to the mandap when needed!",
+      content: "Imagine you are throwing a massive big fat Indian wedding.\n\nYou can't fit all your relatives in one single giant banquet hall (Contiguous Memory). So instead, you book multiple smaller hotel rooms (Frames) across the city.\n\nYour uncle's family (Page 1) gets Room 101, your cousins (Page 2) get Room 505. They don't need to be in adjacent rooms, but they are all part of your wedding process! \n\nThe **Page Table** is just your uncle ji with a WhatsApp list, keeping track of exactly which relative is in which hotel room so they can be called to the mandap when needed!",
       model: 'Anakin-Mock-Agent', latency_ms: 920
     };
   }
@@ -94,7 +94,7 @@ const getMockDataForAgent = (agentId, promptText) => {
   }
   if (isPyq) {
     return {
-      content: "#### Past Year Question Analysis (Indian Universities)\\n\\n**Frequency:** Extremely High (Appears in 90% of OS papers)\\n\\n**Typical Questions:**\\n1. *Explain Paging and how it differs from Segmentation. (10 marks)*\\n2. *Calculate the physical address given a logical address and page table. (5 marks)*\\n3. *What is a TLB? How does it improve paging performance? (7 marks)*\\n\\n**Pro-Tip for Exams:** Always draw the diagram showing Logical Address (Page Number + Offset) mapping to Physical Address (Frame Number + Offset). It guarantees full marks!",
+      content: "#### Past Year Question Analysis (Indian Universities)\n\n**Frequency:** Extremely High (Appears in 90% of OS papers)\n\n**Typical Questions:**\n1. *Explain Paging and how it differs from Segmentation. (10 marks)*\n2. *Calculate the physical address given a logical address and page table. (5 marks)*\n3. *What is a TLB? How does it improve paging performance? (7 marks)*\n\n**Pro-Tip for Exams:** Always draw the diagram showing Logical Address (Page Number + Offset) mapping to Physical Address (Frame Number + Offset). It guarantees full marks!",
       model: 'Anakin-Mock-Agent', latency_ms: 780
     };
   }
