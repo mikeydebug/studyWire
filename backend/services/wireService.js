@@ -116,16 +116,19 @@ const runStudyWirePipeline = async (topic, subject, language) => {
   const prompts = buildPrompts(topic, subject, language);
 
   const agents = [
-    { key: 'concept', id: process.env.ANAKIN_CONCEPT_AGENT_ID, prompt: prompts.concept },
-    { key: 'analogy', id: process.env.ANAKIN_ANALOGY_AGENT_ID, prompt: prompts.analogy },
-    { key: 'quiz', id: process.env.ANAKIN_QUIZ_AGENT_ID, prompt: prompts.quiz },
-    { key: 'pyq', id: process.env.ANAKIN_PYQ_AGENT_ID, prompt: prompts.pyq },
-    { key: 'studyPlan', id: process.env.ANAKIN_PLAN_AGENT_ID, prompt: prompts.studyPlan }
+    { key: 'concept', prompt: prompts.concept },
+    { key: 'analogy', prompt: prompts.analogy },
+    { key: 'quiz', prompt: prompts.quiz },
+    { key: 'pyq', prompt: prompts.pyq },
+    { key: 'studyPlan', prompt: prompts.studyPlan }
   ];
+
+  // We only need ONE Anakin Agent ID! We will hit the same agent 5 times in parallel with different prompts.
+  const singleAgentId = process.env.ANAKIN_AGENT_ID || 'mock_agent';
 
   // Rule: Run in PARALLEL using Promise.allSettled()
   const results = await Promise.allSettled(
-    agents.map(agent => callWireAgent(agent.id, agent.prompt))
+    agents.map(agent => callWireAgent(singleAgentId, agent.prompt))
   );
 
   // Map results back to the requested structure, with graceful fallbacks
