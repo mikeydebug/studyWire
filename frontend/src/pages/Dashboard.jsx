@@ -40,7 +40,8 @@ const Dashboard = () => {
     setResults(null);
     
     try {
-      const response = await axios.post('http://localhost:5001/api/study', {
+      // Use relative path so it works perfectly in Vercel production and local dev
+      const response = await axios.post('/api/study', {
         topic, subject, language
       });
       
