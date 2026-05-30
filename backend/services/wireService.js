@@ -7,11 +7,12 @@ const callWireAgent = async (agentId, promptText) => {
   try {
     // Assuming a standard Anakin Wire execution endpoint
     // Replace with the exact endpoint provided by Anakin API docs if different
-    const url = `https://api.anakin.ai/v1/agents/${agentId}/run`;
+    // Use the Chatbot App endpoint as per Anakin documentation
+    const url = `https://api.anakin.ai/v1/chatbots/${agentId}/messages`;
     
     const response = await axios.post(url, {
-      input: promptText,
-      config: { timeout: 15000 }
+      content: promptText,
+      stream: false
     }, {
       headers: {
         'Authorization': `Bearer ${process.env.ANAKIN_API_KEY}`,
@@ -40,8 +41,8 @@ const callWireAgent = async (agentId, promptText) => {
     const latency = Date.now() - startTime;
     
     // Check if we triggered the mock intentionally or if it's a real error
-    if (error.message === 'MOCK_TRIGGER' || error.response?.status === 401 || !process.env.ANAKIN_API_KEY || process.env.ANAKIN_API_KEY.includes('your_api_key')) {
-      console.log(`[Wire API] Using beautiful mock data for Agent ${agentId} (Latency: ${latency}ms)`);
+    if (process.env.MOCK_API === 'true' || error.message === 'MOCK_TRIGGER' || error.response?.status === 401 || error.response?.status === 403 || !process.env.ANAKIN_API_KEY || process.env.ANAKIN_API_KEY.includes('your_api_key')) {
+      console.log(`[Wire API] Using beautiful mock data for Agent ${agentId} (Latency: ${latency}ms) - API Fallback Triggered`);
       return getMockDataForAgent(agentId, promptText);
     }
 
